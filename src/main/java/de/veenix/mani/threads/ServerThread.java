@@ -9,11 +9,14 @@ import java.net.Socket;
 public abstract class ServerThread implements Runnable {
 
     @Getter
-    private Socket client;
+    private final Socket client;
 
+    @Getter
+    private final String name;
 
-    public ServerThread(Socket client) {
+    public ServerThread(Socket client, String name) {
         this.client = client;
-        log.info("Created new ServerThread");
+        this.name = name;
+        log.info("Created new ServerThread(" + name + ")");
     }
 }

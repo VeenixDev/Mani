@@ -25,7 +25,7 @@ public class Server {
     @Getter
     private Thread acceptThread = null;
 
-    public Server(int port, ServerThread serverThread) {
+    public Server(int port, Class<? extends ServerThread> serverThread) {
         PORT = port;
 
         try {
@@ -35,8 +35,9 @@ public class Server {
         }
 
         if(serverThread != null) {
-            AcceptThread thread = new AcceptThread(serverThread.getClass(), executor, sSocket);
+            AcceptThread thread = new AcceptThread(serverThread, executor, sSocket);
             acceptThread = new Thread(thread);
+            acceptThread.start();
         } else {
             log.error("Couldn't start AcceptThread for the server, serverThread is null");
             try {

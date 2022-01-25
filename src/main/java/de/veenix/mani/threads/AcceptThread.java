@@ -34,6 +34,7 @@ public class AcceptThread implements Runnable {
             // Accepts every request that comes in until the server socket is closed
             while(!serverSocket.isClosed() && thread != null) {
                 Socket client = serverSocket.accept();
+                log.info("Client connected on port " + client.getLocalPort());
 
                 ServerThread sThread = (ServerThread) thread.getConstructors()[0].newInstance(client);
 
