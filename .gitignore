@@ -28,3 +28,4 @@ src/META-INF
 /.idea/
 .vscode/
 logs/
+config.json
