@@ -29,3 +29,4 @@ src/META-INF
 .vscode/
 logs/
 config.json
+httpFiles/
